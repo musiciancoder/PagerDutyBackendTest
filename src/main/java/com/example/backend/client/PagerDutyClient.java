@@ -20,6 +20,7 @@ public class PagerDutyClient {
         headers.set("Authorization", "Token token=" + apiToken);
         headers.set("Accept", "application/vnd.pagerduty+json;version=2");
         logger.info("PagerDutyClient initialized with provided API token.");
+        this.fetchServices();
     }
 
 /*    public static void prueba() {
@@ -34,6 +35,13 @@ public class PagerDutyClient {
                 entity,
                 String.class
         );
+        if (response.getStatusCode() != HttpStatus.OK) {
+            logger.error("Failed to fetch services: {}", response.getStatusCode());
+            throw new RuntimeException("Failed to fetch services from PagerDuty API");
+        }else {
+            logger.info("Successfully fetched services from PagerDuty API");
+            logger.info("Response: {}", response.getBody());
+        }
         return response.getBody(); // Replace with DTO later
     }
 }
