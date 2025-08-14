@@ -1,14 +1,15 @@
 package com.example.backend.entity;
 
 import jakarta.persistence.Entity;
-
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "`PG_USER`") // Escapes the table name to avoid conflicts with reserved keywords
 public class User {
     @Id
     private String id;
