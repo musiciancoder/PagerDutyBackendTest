@@ -26,19 +26,19 @@ public class ServiceController {
 
 
 
-    @GetMapping("/etl/services")
+    @GetMapping("/ping")
     @Operation(summary = "List stored services", description = "Lists all services stored in H2 with name and description")
     public ResponseEntity<List<ServiceDto>> listStoredServices() {
         logger.info("CONTROLLER OKAY");
         List<ServiceDto> services = pagerDutyService.getOrFetchServices();
-        logger.info("Returning {} services from H2 database", services.size());
+        logger.info("Returning {} services", services.size());
         return ResponseEntity.ok(services);
     }
 
-    @GetMapping("/ping")
+/*    @GetMapping("/ping")
     @Operation(summary = "Ping endpoint", description = "Used to verify backend connection")
     public ResponseEntity<String> ping() {
         logger.info("CONTROLLER OKAY");
         return ResponseEntity.ok("Backend is alive and reachable.");
-    }
+    }*/
 }
