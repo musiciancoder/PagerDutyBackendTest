@@ -28,7 +28,7 @@ public class PagerDutyClient {
         headers.set("Authorization", "Token token=" + apiToken);
         headers.set("Accept", "application/vnd.pagerduty+json;version=2");
         logger.info("PagerDutyClient initialized with provided API token.");
-        this.fetchServices();
+        //this.fetchServices();
     }
 
     public List<ServiceDto> fetchServices() {
